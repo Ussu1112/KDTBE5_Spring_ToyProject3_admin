@@ -1,0 +1,11 @@
+CREATE TABLE user_tb (
+     id INT PRIMARY KEY AUTO_INCREMENT,
+     username VARCHAR(20) NOT NULL,
+     password VARCHAR(120) NOT NULL,
+     email VARCHAR(20) NOT NULL,
+     nickname VARCHAR(20) NOT NULL,
+     role VARCHAR(20) NOT NULL,
+     is_blacked BOOLEAN DEFAULT FALSE,
+     created_at TIMESTAMP NOT NULL,
+     update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
