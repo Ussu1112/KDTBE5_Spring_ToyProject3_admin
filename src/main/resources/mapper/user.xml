@@ -6,4 +6,13 @@
     <select id="findByUsername" resultType="fastcampus.group9.toyproject3admin.domain.user.User">
         select * from user_tb where username = #{username}
     </select>
+    <select id="findAll" resultType="fastcampus.group9.toyproject3admin.domain.user.User">
+        select * from user_tb
+    </select>
+    <update id="updateById">
+        update user_tb
+        set role = #{userRole}
+        where id = #{id}
+    </update>
+
 </mapper>
