@@ -1,5 +1,6 @@
 package fastcampus.group9.toyproject3admin.web;
 
+import fastcampus.group9.toyproject3admin._core.handler.exception.CustomException;
 import fastcampus.group9.toyproject3admin.domain.email.EmailMessage;
 import fastcampus.group9.toyproject3admin.domain.user.User;
 import fastcampus.group9.toyproject3admin.service.email.EmailService;
@@ -34,12 +35,15 @@ public class UserApiController {
 
     @PutMapping("/api/v1/update/{id}")
     public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody UpdateDTO updateDTO){
+        validation(id);
         userService.roleUpdate(updateDTO);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/api/v1/black/{id}")
     public ResponseEntity<Void> userBlack(@PathVariable Long id){
+        validation(id);
+
         User user = userService.findById(id);
 
         EmailMessage emailMessage = EmailMessage.builder()
@@ -49,5 +53,12 @@ public class UserApiController {
 
         emailService.sendMail(emailMessage, user.getUsername(), "userBlackEmailForm");
         return ResponseEntity.noContent().build();
+    }
+
+    private void validation(Long id) {
+        User user = userService.findById(id);
+
+        if (user == null)
+            throw new CustomException("해당 유저가 없습니다.");
     }
 }
