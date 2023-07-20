@@ -3,6 +3,8 @@ package fastcampus.group9.toyproject3admin.service.board;
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.domain.board.BoardRepository;
 import fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO;
+import fastcampus.group9.toyproject3admin.web.dto.StatsRequestDTO;
+import fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,9 @@ public class BoardService {
 
     public void updateReportFlagById(Long id) {
         boardRepository.updateReportFlagById(id);
+    }
+
+    public List<StatsResponseDTO> getStats(StatsRequestDTO requestDTO) {
+        return boardRepository.getStats(requestDTO);
     }
 }

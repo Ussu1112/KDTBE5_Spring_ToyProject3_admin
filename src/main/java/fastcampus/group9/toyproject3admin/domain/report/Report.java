@@ -10,16 +10,16 @@ import java.time.LocalDateTime;
 public class Report {
     private Long id;
     private Long boardId;
-    private boolean is_reported;
+    private boolean isReported;
     private String reportContent;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     @Builder
-    public Report(Long id, Long boardId, boolean is_reported, String reportContent, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Report(Long id, Long boardId, boolean isReported, String reportContent, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.id = id;
         this.boardId = boardId;
-        this.is_reported = is_reported;
+        this.isReported = isReported;
         this.reportContent = reportContent;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
