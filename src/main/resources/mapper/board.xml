@@ -24,4 +24,31 @@
             )
         where id = #{id}
     </update>
+    <select id="getStats" resultType="fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO">
+        select ut.username, ut.nickname,
+               stat.user_id, stat.bt_count, stat.ct_count
+        from (select user_id, count(*) as bt_count, 0 as ct_count
+              from board_tb
+              group by user_id
+              union all
+              select user_id, 0 as bt_count, count(*) as ct_count
+              from comment_tb
+              group by user_id
+              ) as stat
+        join user_tb ut on stat.user_id = ut.id
+        order by
+        <if test='columnName == "bt_count" and order == "asc"'>
+            bt_count,
+        </if>
+        <if test='columnName == "bt_count" and order == "desc"'>
+            bt_count desc,
+        </if>
+        <if test='columnName == "ct_count" and order == "asc"'>
+            ct_count,
+        </if>
+        <if test='columnName == "ct_count" and order == "desc"'>
+            ct_count desc,
+        </if>
+        ut.username
+    </select>
 </mapper>
