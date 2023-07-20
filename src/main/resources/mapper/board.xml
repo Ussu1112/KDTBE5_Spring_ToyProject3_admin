@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fastcampus.group9.toyproject3admin.domain.board.BoardRepository">
     <select id="findAll" resultType="fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO">
-        select b.id, b.title, b.content, b.author, b.reportFlag,
-             coalesce(r.is_reported, false) as is_reported, b.created_at
+        select b.id, b.title, b.content, b.author, b.is_reported,
+             coalesce(r.report_flag, false) as report_flag, b.created_at
         from board_tb b
         left join report_tb r ON r.board_id = b.id
     </select>
@@ -17,11 +17,38 @@
     </delete>
     <update id="updateReportFlagById">
         update board_tb
-        set reportFlag = (
-            case when reportFlag = true then false
-                when reportFlag = false then true
+        set report_flag = (
+            case when report_flag = true then false
+                when report_flag = false then true
                 end
             )
         where id = #{id}
     </update>
+    <select id="getStats" resultType="fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO">
+        select ut.username, ut.nickname,
+               stat.user_id, stat.bt_count, stat.ct_count
+        from (select user_id, count(*) as bt_count, 0 as ct_count
+              from board_tb
+              group by user_id
+              union all
+              select user_id, 0 as bt_count, count(*) as ct_count
+              from comment_tb
+              group by user_id
+              ) as stat
+        join user_tb ut on stat.user_id = ut.id
+        order by
+        <if test='columnName == "bt_count" and order == "asc"'>
+            bt_count,
+        </if>
+        <if test='columnName == "bt_count" and order == "desc"'>
+            bt_count desc,
+        </if>
+        <if test='columnName == "ct_count" and order == "asc"'>
+            ct_count,
+        </if>
+        <if test='columnName == "ct_count" and order == "desc"'>
+            ct_count desc,
+        </if>
+        ut.username
+    </select>
 </mapper>

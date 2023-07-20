@@ -14,7 +14,7 @@ public class BoardResponseDTO {
     private String title;
     private String content;
     private String author;
-    private boolean reportFlag;
     private boolean isReported;
+    private boolean reportFlag;
     private LocalDateTime createdAt;
 }

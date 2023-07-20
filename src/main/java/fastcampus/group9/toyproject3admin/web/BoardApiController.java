@@ -4,6 +4,8 @@ import fastcampus.group9.toyproject3admin._core.handler.exception.CustomExceptio
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.service.board.BoardService;
 import fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO;
+import fastcampus.group9.toyproject3admin.web.dto.StatsRequestDTO;
+import fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +35,12 @@ public class BoardApiController {
         validation(id);
         boardService.updateReportFlagById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/api/v1/stats")
+    public ResponseEntity<List<StatsResponseDTO>> getUserStat(@RequestBody StatsRequestDTO requestDTO){
+        List<StatsResponseDTO> stats = boardService.getStats(requestDTO);
+        return ResponseEntity.ok(stats);
     }
 
     private void validation(Long id) {
