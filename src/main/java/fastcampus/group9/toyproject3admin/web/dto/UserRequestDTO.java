@@ -4,7 +4,7 @@ import fastcampus.group9.toyproject3admin.domain.user.UserRoleEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-public class UserRequest {
+public class UserRequestDTO {
 
     @Getter @Setter
     public static class UpdateDTO {

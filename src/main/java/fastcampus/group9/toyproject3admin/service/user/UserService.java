@@ -2,7 +2,7 @@ package fastcampus.group9.toyproject3admin.service.user;
 
 import fastcampus.group9.toyproject3admin.domain.user.User;
 import fastcampus.group9.toyproject3admin.domain.user.UserRepository;
-import fastcampus.group9.toyproject3admin.web.dto.UserRequest;
+import fastcampus.group9.toyproject3admin.web.dto.UserRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void roleUpdate(UserRequest.UpdateDTO updateDTO) {
+    public void roleUpdate(UserRequestDTO.UpdateDTO updateDTO) {
         userRepository.updateById(updateDTO);
     }
 

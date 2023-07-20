@@ -1,9 +1,9 @@
 package fastcampus.group9.toyproject3admin.web;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class ViewController {
     @GetMapping("/")
     public String index() {

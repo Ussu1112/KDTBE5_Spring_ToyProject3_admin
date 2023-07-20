@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class UserResponse {
+public class UserResponseDTO {
     private Long id;
     private String username;
     private String email;
     private UserRoleEnum userRole;
     private boolean isBlacked;
 
-    public static UserResponse of(User user){
-        return new UserResponse(user.getId(), user.getUsername(), user.getEmail(), user.getRole(), user.isBlacked());
+    public static UserResponseDTO of(User user){
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail(), user.getRole(), user.isBlacked());
     }
 
-    public static List<UserResponse> listOf(List<User> user){
-        return user.stream().map(UserResponse::of).collect(Collectors.toList());
+    public static List<UserResponseDTO> listOf(List<User> user){
+        return user.stream().map(UserResponseDTO::of).collect(Collectors.toList());
     }
 }
