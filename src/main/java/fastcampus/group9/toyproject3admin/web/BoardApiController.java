@@ -3,7 +3,7 @@ package fastcampus.group9.toyproject3admin.web;
 import fastcampus.group9.toyproject3admin._core.handler.exception.CustomException;
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.service.board.BoardService;
-import fastcampus.group9.toyproject3admin.web.dto.BoardResponse;
+import fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +16,8 @@ public class BoardApiController {
     private final BoardService boardService;
 
     @GetMapping("/api/v1/posts")
-    public ResponseEntity<List<BoardResponse>> getAllPosts(){
-        List<BoardResponse> allPosts = boardService.findAll();
+    public ResponseEntity<List<BoardResponseDTO>> getAllPosts(){
+        List<BoardResponseDTO> allPosts = boardService.findAll();
         return ResponseEntity.ok(allPosts);
     }
 

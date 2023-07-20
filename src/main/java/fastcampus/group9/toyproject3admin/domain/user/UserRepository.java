@@ -1,6 +1,6 @@
 package fastcampus.group9.toyproject3admin.domain.user;
 
-import fastcampus.group9.toyproject3admin.web.dto.UserRequest;
+import fastcampus.group9.toyproject3admin.web.dto.UserRequestDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,5 +14,5 @@ public interface UserRepository {
 
     List<User> findAll();
 
-    void updateById(UserRequest.UpdateDTO updateDTO);
+    void updateById(UserRequestDTO.UpdateDTO updateDTO);
 }
