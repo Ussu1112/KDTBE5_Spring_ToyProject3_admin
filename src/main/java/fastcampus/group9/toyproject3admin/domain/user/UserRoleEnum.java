@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum UserRole {
+public enum UserRoleEnum {
     SPROUT,
     VIP,
     ADMIN

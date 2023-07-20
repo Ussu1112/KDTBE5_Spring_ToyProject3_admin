@@ -14,13 +14,13 @@ public class User {
     private String password;
     private String email;
     private String nickname;
-    private UserRole role;
+    private UserRoleEnum role;
     private boolean isBlacked;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
 
     @Builder
-    public User(Long id, String username, String password, String email, String nickname, UserRole role, boolean isBlacked, LocalDateTime createdAt, LocalDateTime updateAt) {
+    public User(Long id, String username, String password, String email, String nickname, UserRoleEnum role, boolean isBlacked, LocalDateTime createdAt, LocalDateTime updateAt) {
         Id = id;
         this.username = username;
         this.password = password;
