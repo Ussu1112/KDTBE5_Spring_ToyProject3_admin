@@ -3,6 +3,8 @@
 ### 프로젝트 환경
 `JDK 11` `Spring Boot` `MyBatis` `H2 database` `MYSQL`
 
+<br>
+
 ### 📄 관리자 기능 명세서
 
 1. 관리자 회원 권한 관리
@@ -17,6 +19,8 @@
       순으로 정렬가능해야 함
 5. 관리자 블랙리스트 고객 등록/해제
     - [X]  게시글 신고목록 페이지 구현, 해당 페이지에서 블랙리스트 고객 등록 및 해제 가능
+
+<br>
   
 ### 📒 테이블 목록
 
@@ -84,16 +88,40 @@ create table report_tb
 );
 ```
 
+<br>
 
 ### 📨 Email 전송 세팅
 
 ✅ Naver SMTP 사용
 1. 네이버 로그인
 2. 네이버 2차 인증 (앱 비밀번호 확인)
-3. 네이버 메일 -> 환경설정 -> POP3/SMTP 설정에서 **POP3/SMTP 사용** 사용함으로 체크 
+3. 네이버 메일 -> 환경설정 -> POP3/SMTP 설정에서 **POP3/SMTP 사용** 사용함으로 체크
 
-application.yml 안에 있는 username, password 는 환경 변수로 관리
-Edit Configuration 에서 환경변수 설정
-spring.mail.username={navermail@naver.com};spring.mail.password={naverAppPassword}
+application.yml 안에 있는 username, password 는 환경 변수로 관리   
+Edit Configuration 에서 환경변수 설정   
+spring.mail.username={navermail@naver.com};spring.mail.password={naverAppPassword}   
+
+<br>
+
+### Docker Compose
+
+application.yml - prod 설정 시 Mysql Db 사용
+
+```yml
+version: "3"
+
+services:
+  database:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=testdb
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+```
+
+**테이블은 [메인 애플리케이션](https://github.com/Ussu1112/KDTBE5_Spring_ToyProject3)에서 JPA로 자동 생성**
+
 
 
