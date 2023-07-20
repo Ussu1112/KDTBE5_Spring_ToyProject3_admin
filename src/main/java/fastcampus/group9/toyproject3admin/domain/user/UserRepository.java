@@ -8,6 +8,8 @@ import java.util.List;
 @Mapper
 public interface UserRepository {
 
+    User findById(Long id);
+
     User findByUsername(String username);
 
     List<User> findAll();

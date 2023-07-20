@@ -13,7 +13,7 @@ public class UserRequest {
 
         public UpdateDTO(Long id, UserRole userRole) {
             this.id = id;
-            this.userRole = userRole.getName();
+            this.userRole = String.valueOf(userRole);
         }
     }
 }
