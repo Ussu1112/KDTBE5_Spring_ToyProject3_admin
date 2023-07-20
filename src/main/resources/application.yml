@@ -11,9 +11,33 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  sql:
+    init:
+      schema-locations:
+        - classpath:db/table.sql
+      data-locations:
+        - classpath:db/data.sql
   h2:
     console:
       enabled: true
+  output:
+    ansi:
+      enabled: always
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: ${spring.mail.username}
+    password: ${spring.mail.password}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+          timeout: 5000
+          ssl:
+            trust: smtp.naver.com
+            enable: true #반드시 필요 -> SSL 필요로 되어있으면
 
 logging:
   level:
