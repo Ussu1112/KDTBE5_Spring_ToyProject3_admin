@@ -23,6 +23,21 @@ spring:
   output:
     ansi:
       enabled: always
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: ${spring.mail.username}
+    password: ${spring.mail.password}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+          timeout: 5000
+          ssl:
+            trust: smtp.naver.com
+            enable: true #반드시 필요 -> SSL 필요로 되어있으면
 
 logging:
   level:
