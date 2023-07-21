@@ -31,4 +31,7 @@ public class UserService {
     }
 
 
+    public void updateIsBlack(Long id) {
+        userRepository.updateIsBlacked(id);
+    }
 }

@@ -17,5 +17,14 @@
         set role = #{userRole}
         where id = #{id}
     </update>
+    <update id="updateIsBlacked">
+        update user_tb
+        set is_blacked = (
+            case when is_blacked = true then false
+                 when is_blacked = false then true
+                end
+            )
+        where id = #{id}
+    </update>
 
 </mapper>

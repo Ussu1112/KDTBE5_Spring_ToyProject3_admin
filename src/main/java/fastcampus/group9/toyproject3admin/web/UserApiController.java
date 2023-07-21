@@ -52,6 +52,7 @@ public class UserApiController {
                 .build();
 
         emailService.sendMail(emailMessage, user.getUsername(), "userBlackEmailForm");
+        userService.updateIsBlack(id);
         return ResponseEntity.noContent().build();
     }
 
