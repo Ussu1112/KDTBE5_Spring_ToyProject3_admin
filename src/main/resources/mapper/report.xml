@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fastcampus.group9.toyproject3admin.domain.report.ReportRepository">
     <insert id="insert">
-        insert into report_tb(board_id, is_reported, reportContent, created_at)
+        insert into report_tb(board_id, report_flag, report_content, created_at)
         values (#{boardId}, true, #{reportContent}, now())
     </insert>
 </mapper>

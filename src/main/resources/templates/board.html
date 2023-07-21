@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 관리 페이지</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header class="gnb">
+    <nav>
+        <ul class="gnb-group">
+            <li><a href="/">회원관리</a></li>
+            <li><a href="/board">게시글관리</a></li>
+            <li><a href="/stats">통계</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+            <th>숨기기/보이기</th>
+            <th>신고여부</th>
+            <th>생성일자</th>
+            <th>Actions</th>
+        </tr>
+        <tbody id="board-list">
+        <tr th:each="board : ${boards}">
+            <td th:text="${board.id}"></td>
+            <td th:text="${board.title}"></td>
+            <td th:text="${board.content}"></td>
+            <td th:text="${board.author}"></td>
+            <td th:text="${board.isReported}"></td>
+            <td th:text="${board.reportFlag}"></td>
+            <td th:text="${board.createdAt}"></td>
+            <td>
+                <button th:onclick="deleteBoard([[${board.id}]])">삭제하기</button>
+                <button th:onclick="updateVisible([[${board.id}]])">가리기/보이기</button>
+                <button th:onclick="addReportModal([[${board.id}]])">신고등록</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="modal" data-form-type="add" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideAddModal()">&times;</span>
+            <form id="form">
+                <label for="name">신고내용</label><br>
+                <input id="name" name="name" required type="text"><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script th:src="@{/js/board.js}"></script>
+</body>
+</html>
+

@@ -15,4 +15,6 @@ public interface UserRepository {
     List<User> findAll();
 
     void updateById(UserRequestDTO.UpdateDTO updateDTO);
+
+    void updateIsBlacked(Long id);
 }

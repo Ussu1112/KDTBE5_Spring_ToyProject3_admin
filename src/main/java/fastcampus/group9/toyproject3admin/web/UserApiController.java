@@ -51,7 +51,8 @@ public class UserApiController {
                 .subject("당신 계정이 블랙되었습니다.")
                 .build();
 
-        emailService.sendMail(emailMessage, user.getUsername(), "userBlackEmailForm");
+//        emailService.sendMail(emailMessage, user.getUsername(), "userBlackEmailForm");
+        userService.updateIsBlack(id);
         return ResponseEntity.noContent().build();
     }
 
