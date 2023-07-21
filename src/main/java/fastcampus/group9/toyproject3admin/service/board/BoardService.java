@@ -20,7 +20,7 @@ public class BoardService {
         return boardRepository.findById(id);
     }
 
-    public List<BoardResponseDTO> findAll() {
+    public List<Board> findAll() {
         return boardRepository.findAll();
     }
 

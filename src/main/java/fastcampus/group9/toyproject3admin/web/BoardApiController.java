@@ -19,8 +19,8 @@ public class BoardApiController {
 
     @GetMapping("/api/v1/posts")
     public ResponseEntity<List<BoardResponseDTO>> getAllPosts(){
-        List<BoardResponseDTO> allPosts = boardService.findAll();
-        return ResponseEntity.ok(allPosts);
+        List<Board> allPosts = boardService.findAll();
+        return ResponseEntity.ok(BoardResponseDTO.listOf(allPosts));
     }
 
     @DeleteMapping("/api/v1/board/{id}")

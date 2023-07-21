@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface BoardRepository {
 
-    List<BoardResponseDTO> findAll();
+    List<Board> findAll();
 
     Board findById(Long id);
 
