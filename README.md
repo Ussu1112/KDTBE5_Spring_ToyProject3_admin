@@ -31,7 +31,7 @@ create table user_tb
      created_at datetime(6)          null,
      update_at  datetime(6)          null,
      email      varchar(20)          not null,
-     is_blacked tinyint(1) default 0 null,
+     is_blacked boolean default false not null,
      nickname   varchar(20)          not null,
      password   varchar(120)         not null,
      role       varchar(255)         null,
@@ -47,7 +47,7 @@ create table board_tb
      update_at   datetime(6)  null,
      author      varchar(255) null,
      content     text         null,
-     is_reported bit          not null,
+     is_reported boolean default false not null,
      thumbnail   varchar(255) null,
      title       varchar(255) null,
      user_role   varchar(255) null,
@@ -82,7 +82,7 @@ create table report_tb
      created_at     datetime(6)  null,
      update_at      datetime(6)  null,
      report_content varchar(255) null,
-     report_flag    bit          not null,
+     report_flag    boolean default false not null,
      board_id       bigint       null,
      foreign key (board_id) references board_tb (id)
 );
