@@ -17,10 +17,14 @@ public class UserResponseDTO {
     private String username;
     private String email;
     private UserRoleEnum userRole;
-    private boolean isBlacked;
+    private String isBlacked;
 
     public static UserResponseDTO of(User user){
-        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail(), user.getRole(), user.isBlacked());
+        String isBlack = "블랙아님";
+        if (user.isBlacked()){
+            isBlack = "블랙";
+        }
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail(), user.getRole(), isBlack);
     }
 
     public static List<UserResponseDTO> listOf(List<User> user){

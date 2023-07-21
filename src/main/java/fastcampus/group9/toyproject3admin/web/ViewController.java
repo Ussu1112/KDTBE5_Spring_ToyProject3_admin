@@ -18,4 +18,14 @@ public class ViewController {
         model.addAttribute("users", (UserResponseDTO.listOf(userService.findAll())));
         return "admin.html";
     }
+
+    @GetMapping("/board")
+    public String board(Model model) {
+        return "board.html";
+    }
+
+    @GetMapping("/stats")
+    public String stats(Model model){
+        return "stats.html";
+    }
 }
