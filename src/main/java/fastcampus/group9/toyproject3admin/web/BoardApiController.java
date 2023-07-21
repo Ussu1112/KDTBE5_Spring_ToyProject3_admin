@@ -33,7 +33,7 @@ public class BoardApiController {
     @PutMapping("/api/v1/board/{id}")
     public ResponseEntity<Void> updateVisible(@PathVariable Long id){
         validation(id);
-        boardService.updateReportFlagById(id);
+        boardService.updateVisibleById(id);
         return ResponseEntity.noContent().build();
     }
 

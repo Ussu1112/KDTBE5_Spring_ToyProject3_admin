@@ -16,18 +16,21 @@ public class Board {
     private String content;
     private String author;
     private boolean isReported;
+    private boolean reportFlag;
     private LocalDateTime createdAt;
     private LocalDateTime updateAt;
 
     @Builder
-    public Board(Long id, Long userId, String title, String content, String author, boolean isReported, LocalDateTime createdAt, LocalDateTime updateAt) {
+    public Board(Long id, Long userId, String title, String content, String author, boolean isReported, boolean reportFlag, LocalDateTime createdAt, LocalDateTime updateAt) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.content = content;
         this.author = author;
         this.isReported = isReported;
+        this.reportFlag = reportFlag;
         this.createdAt = createdAt;
         this.updateAt = updateAt;
     }
 }
+

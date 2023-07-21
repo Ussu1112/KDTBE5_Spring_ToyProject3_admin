@@ -2,7 +2,6 @@ package fastcampus.group9.toyproject3admin.service.board;
 
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.domain.board.BoardRepository;
-import fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO;
 import fastcampus.group9.toyproject3admin.web.dto.StatsRequestDTO;
 import fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO;
 import lombok.RequiredArgsConstructor;
@@ -28,8 +27,8 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-    public void updateReportFlagById(Long id) {
-        boardRepository.updateReportFlagById(id);
+    public void updateVisibleById(Long id) {
+        boardRepository.updateVisibleById(id);
     }
 
     public List<StatsResponseDTO> getStats(StatsRequestDTO requestDTO) {

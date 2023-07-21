@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fastcampus.group9.toyproject3admin.domain.board.BoardRepository">
-    <select id="findAll" resultType="fastcampus.group9.toyproject3admin.web.dto.BoardResponseDTO">
+    <select id="findAll" resultType="fastcampus.group9.toyproject3admin.domain.board.Board">
         select b.id, b.title, b.content, b.author, b.is_reported,
              coalesce(r.report_flag, false) as report_flag, b.created_at
         from board_tb b
@@ -15,11 +15,11 @@
     <delete id="deleteById">
         delete from board_tb where id = #{id}
     </delete>
-    <update id="updateReportFlagById">
+    <update id="updateVisibleById">
         update board_tb
-        set report_flag = (
-            case when report_flag = true then false
-                when report_flag = false then true
+        set is_reported = (
+            case when is_reported = true then false
+                when is_reported = false then true
                 end
             )
         where id = #{id}

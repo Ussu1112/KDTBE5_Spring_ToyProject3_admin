@@ -1,5 +1,6 @@
 package fastcampus.group9.toyproject3admin.web.dto;
 
+import fastcampus.group9.toyproject3admin._core.utils.DateUtils;
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,16 +19,22 @@ public class BoardResponseDTO {
     private String content;
     private String author;
     private String isReported;
-    private LocalDateTime createdAt;
+    private String reportFlag;
+    private String createdAt;
 
     public static BoardResponseDTO of(Board board){
-        String isReported = "";
+        String isReported = "보이기";
         if (board.isReported()){
-            isReported = "신고";
+            isReported = "숨김";
         }
+
+        String reportFlag = "";
+        if (board.isReportFlag())
+            reportFlag = "신고된 게시글";
+
         return new BoardResponseDTO(
-                board.getId(), board.getTitle(), board.getContent(), board.getAuthor(),
-                isReported, board.getCreatedAt());
+            board.getId(), board.getTitle(), board.getContent(), board.getAuthor(),
+            isReported, reportFlag, DateUtils.toStringFormat(board.getCreatedAt()));
     }
 
     public static List<BoardResponseDTO> listOf(List<Board> board){
