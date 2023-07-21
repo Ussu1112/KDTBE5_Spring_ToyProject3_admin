@@ -24,9 +24,9 @@
             )
         where id = #{id}
     </update>
-    <select id="getStats" resultType="fastcampus.group9.toyproject3admin.web.dto.StatsResponseDTO">
+    <select id="getStats" resultType="fastcampus.group9.toyproject3admin.domain.stats.Stats">
         select ut.username, ut.nickname,
-               stat.user_id, stat.bt_count, stat.ct_count
+            stat.user_id, sum(stat.bt_count) as bt_count, sum(stat.ct_count) as ct_count
         from (select user_id, count(*) as bt_count, 0 as ct_count
               from board_tb
               group by user_id
@@ -36,6 +36,7 @@
               group by user_id
               ) as stat
         join user_tb ut on stat.user_id = ut.id
+        group by stat.user_id
         order by
         <if test='columnName == "bt_count" and order == "asc"'>
             bt_count,
