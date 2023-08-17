@@ -1,6 +1,6 @@
 package fastcampus.group9.toyproject3admin._core.handler;
 
-import fastcampus.group9.toyproject3admin._core.handler.exception.CustomException;
+import fastcampus.group9.toyproject3admin._core.exception.CustomException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

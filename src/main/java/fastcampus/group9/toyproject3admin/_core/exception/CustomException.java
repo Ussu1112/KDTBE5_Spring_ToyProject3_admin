@@ -1,4 +1,4 @@
-package fastcampus.group9.toyproject3admin._core.handler.exception;
+package fastcampus.group9.toyproject3admin._core.exception;
 
 public class CustomException extends RuntimeException {
 

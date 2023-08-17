@@ -1,6 +1,6 @@
 package fastcampus.group9.toyproject3admin.service.email;
 
-import fastcampus.group9.toyproject3admin._core.handler.exception.CustomException;
+import fastcampus.group9.toyproject3admin._core.exception.CustomException;
 import fastcampus.group9.toyproject3admin.domain.email.EmailMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationContext;
