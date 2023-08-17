@@ -1,7 +1,5 @@
 package fastcampus.group9.toyproject3admin.web;
 
-import fastcampus.group9.toyproject3admin._core.handler.exception.CustomException;
-import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.service.board.BoardService;
 import fastcampus.group9.toyproject3admin.service.report.ReportService;
 import fastcampus.group9.toyproject3admin.web.dto.ReportRequestDTO;
@@ -19,9 +17,6 @@ public class ReportApiController {
 
     @PostMapping("/api/v1/report")
     public ResponseEntity<Void> create(@RequestBody ReportRequestDTO requestDTO){
-        Board board = boardService.findById(requestDTO.getBoardId());
-        if (board == null)
-            throw new CustomException("해당 게시글이 없습니다.");
         boardService.updateVisibleById(requestDTO.getBoardId());
         reportService.add(requestDTO);
         return ResponseEntity.noContent().build();

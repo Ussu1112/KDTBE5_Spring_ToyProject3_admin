@@ -1,5 +1,6 @@
 package fastcampus.group9.toyproject3admin.service.board;
 
+import fastcampus.group9.toyproject3admin._core.exception.CustomException;
 import fastcampus.group9.toyproject3admin.domain.board.Board;
 import fastcampus.group9.toyproject3admin.domain.board.BoardRepository;
 import fastcampus.group9.toyproject3admin.domain.stats.Stats;
@@ -24,14 +25,21 @@ public class BoardService {
     }
 
     public void deleteById(Long id) {
+        final Board board = findById(id);
+        if (board == null)
+            throw new CustomException("해당 게시글이 없습니다.");
         boardRepository.deleteById(id);
     }
 
     public void updateVisibleById(Long id) {
+        final Board board = findById(id);
+        if (board == null)
+            throw new CustomException("해당 게시글이 없습니다.");
         boardRepository.updateVisibleById(id);
     }
 
     public List<Stats> getStats(StatsRequestDTO requestDTO) {
         return boardRepository.getStats(requestDTO);
     }
+
 }

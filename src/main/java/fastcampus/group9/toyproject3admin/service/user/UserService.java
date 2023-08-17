@@ -1,5 +1,6 @@
 package fastcampus.group9.toyproject3admin.service.user;
 
+import fastcampus.group9.toyproject3admin._core.exception.CustomException;
 import fastcampus.group9.toyproject3admin.domain.user.User;
 import fastcampus.group9.toyproject3admin.domain.user.UserRepository;
 import fastcampus.group9.toyproject3admin.web.dto.UserRequestDTO;
@@ -26,12 +27,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void roleUpdate(UserRequestDTO.UpdateDTO updateDTO) {
+    public void roleUpdate(Long id, UserRequestDTO.UpdateDTO updateDTO) {
+        final User user = findById(id);
+        if (user == null)
+            throw new CustomException("해당 유저가 없습니다.");
         userRepository.updateById(updateDTO);
     }
 
-
     public void updateIsBlack(Long id) {
+        final User user = findById(id);
+        if (user == null)
+            throw new CustomException("해당 유저가 없습니다.");
         userRepository.updateIsBlacked(id);
     }
 }
